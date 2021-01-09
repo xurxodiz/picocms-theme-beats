@@ -393,6 +393,7 @@ p + p {
   }
   .main-nav {
     width: 98vw;
+    max-width: 500px;
     height: initial;
     position: initial;
     padding-bottom: 1rem;
