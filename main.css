@@ -1,0 +1,455 @@
+/**
+ * Main.css for Beats theme for Pico
+ * Based on a version originally authored by Fredrik Danielsson, Lost&Keys (http://lostkeys.se)
+ * Further tweaked and refined by Jorge Diz Pico (http://xurxodiz.eu)
+ * Licensed under MIT (https://github.com/xurxodiz/pico-theme-beats/blob/master/LICENSE)
+ */
+
+
+/*
+ * Variables, resets and setup
+ */
+
+:root {
+  --background-color: rgb(255, 255, 255);
+  --text-color: #4d5757;
+  --border-color: #e1e7e8;
+  --code-bg-color: #fafafa;
+  --accent-color: #c1cacc;
+  --link-color: #2980B9;
+
+  --document-horizontal-margin: 80px;
+  --main-content-margin: 0 auto;
+  --main-content-max-width: 800px;
+  --nav-width: 250px;
+  --vertical-padding: 40px;
+
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: rgb(22, 22, 23);
+    --text-color: rgb(190, 200, 200);
+    --border-color: rgb(40, 40, 41);
+    --code-bg-color: rgb(33, 33, 34);
+    --accent-color: rgb(140, 135, 160);
+    --link-color: #2980B9;
+  }
+}
+
+/*
+ * Block styling
+ */
+
+html {
+  font-family: "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  height: 100%;
+}
+
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*
+ * Structure
+ */
+
+.page-content {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.main-content {
+  margin: var(--main-content-margin);
+  width: var(--main-content-max-width);
+}
+
+.main-content .article {
+  margin-left: var(--vertical-padding);
+  margin-right: var(--vertical-padding);
+}
+
+
+/*
+ * Basic styling
+ */
+
+a,
+a:link,
+a:visited {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active,
+a:focus {
+  text-decoration: underline;
+  outline: none !important;
+}
+
+hr {
+  border-color: #ecf0f1;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  margin: 1rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: normal;
+  letter-spacing: -0.025rem;
+  margin-bottom: 1.5rem;
+  margin-top: calc(var(--vertical-padding)/2);
+  margin-left: -10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h2 {
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  position: sticky;
+  top: 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+h2::before,
+h3::before
+{
+  background-color: var(--color-background);
+  color: var(--accent-color);
+  content: '#';
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: -20px;
+  padding-right: 5px;
+  text-align: right;
+  width: 25px;
+}
+
+h1,
+h2,
+h3 {
+  padding-left: 10px;
+}
+
+h1:first-of-type {
+  margin-top: calc(var(--vertical-padding)/2);
+}
+
+
+h2 + h3 {
+  margin-top: 1.5rem;
+}
+
+
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+table td,
+table th {
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: 1px 0;
+  padding: .3rem 0;
+  text-align: left;
+}
+
+/* Avoid border-on-border together with bordered H2 */
+h2 + table tr:first-child th,
+h2 + table tr:first-child td {
+  border-top-width: 0;
+}
+
+code {
+  background-color: var(--code-bg-color);
+  border-radius: 1px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  display: inline-block;
+  font-size: .875rem;
+  padding: 0 3px;
+}
+
+pre code {
+  display: block;
+  padding: 5px 10px;
+}
+
+p + p {
+  margin-top: 1.5rem;
+}
+
+
+/*
+ * Main navigation
+ */
+
+.main-nav {
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-top: var(--vertical-padding);
+  padding-left: var(--vertical-padding);
+  width: calc(var(--nav-width) + var(--vertical-padding));
+  position: absolute;
+  top: 0;
+  left: calc(-1 * calc(var(--nav-width) + var(--vertical-padding)));
+
+    left: calc(-1 * calc(var(--nav-width)));
+    padding-left: 0;
+}
+
+.main-nav nav {
+  width: var(--nav-width);
+  position: fixed;
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.main-nav a {
+  color: var(--text-color);
+  display: flex;
+  font-size: 0.9rem;
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-top: 5px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.main-nav a:hover {
+  text-decoration: none;
+}
+
+.main-nav a .shortcut {
+  align-self: center;
+  color: var(--accent-color);
+  display: inline-block;
+  font-size: .6875rem;
+  font-weight: normal;
+  margin-left: auto;
+  text-align: right;
+}
+
+.main-nav nav ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.main-nav nav li {
+  margin-left: 20px;
+  padding: 2px;
+}
+
+.main-nav nav li a {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.main-nav nav > ul > li > a {
+  background: var(--accent-color);
+  color: black;
+}
+
+.main-nav nav > ul > li.is-active.has-childs > a {
+  padding-left: 3px;
+}
+
+.main-nav nav > ul:first-child > li:first-child {
+  margin-left: 0px;
+}
+
+.main-nav nav > ul:first-child > li:first-child > a {
+  color: red;
+  background: none;
+  font-variant: small-caps;
+  letter-spacing: 0.25em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.main-nav nav > ul:first-child > li:first-child > a:before {
+  content: "\00a0\00a0";
+}
+
+.main-nav nav > ul > li:not(:first-child) > a {
+  padding-left: 0.45rem;
+}
+
+.main-nav nav li.is-active > a {
+  font-weight: bold;
+}
+
+.main-nav nav li:not(.is-active) > ul {
+  display: none;
+}
+
+.main-nav nav li.has-childs.is-active > a:before {
+  content: "⌄\00a0";
+}
+
+.main-nav nav li.has-childs:not(.is-active) > a:before {
+  content: "›\00a0";
+}
+
+.main-nav nav li.is-current > a:before {
+  content: "•\00a0";
+}
+
+.main-nav nav > ul > li:not(.is-current):not(.is-active) > a:before {
+  content: "\00a0\00a0";
+}
+
+/* :not(.has-childs):not(.is-active)
+ * Main navigation
+ */
+
+.page-toc {
+  overflow: hidden;
+  padding-top: var(--vertical-padding);
+  padding-right: var(--vertical-padding);
+  position: absolute;
+  right: calc(-1 * calc(var(--nav-width) + var(--vertical-padding)));
+  top: 0;
+  width: calc(var(--nav-width) + var(--vertical-padding));
+}
+
+.page-toc ul {
+  list-style: none;
+  margin: 0;
+  width: var(--nav-width);
+  position: fixed;
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.page-toc li:not(:last-child) {
+  margin-bottom: 2px;
+}
+
+.page-toc a {
+  color: var(--accent-color);
+  display: flex;
+  font-size: 0.9rem;
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-top: 5px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.page-toc a:hover {
+  text-decoration: none;
+}
+
+.page-toc > ul:first-child > li:first-child > a {
+  border-bottom: 1px solid var(--accent-color);
+  font-variant: small-caps;
+}
+
+
+/* Toc markers are used as anchors since sticky headers
+ * interfere with scrollto when scrolling up.
+ */
+
+.page-toc-scroll-marker {
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  position: relative;
+  top: 1px;
+  width: 1px;
+}
+
+
+/* Footer code. */
+
+.footer {
+  padding: 1rem;
+}
+
+.footer-content {
+  float: right;
+  padding-right: 1rem;
+}
+
+
+/*
+ * Media queries
+ */
+
+@media (max-width: 1300px) {
+  :root {
+    --main-content-margin: 0 0 0 var(--nav-width);
+  }
+  .page-toc {
+    display: none;
+  }
+  .main-nav {
+    position: fixed;
+    left: 0;
+  }
+  .main-nav nav {
+    position: initial;
+  }
+  .main-content {
+    width: auto;
+    max-width: var(--main-content-max-width);
+  }
+}
+
+@media (max-width: 978px) {
+  .main-content {
+    margin: 0;
+  }
+  .main-nav {
+    height: initial;
+    position: initial;
+    left: 0;
+  }
+  .main-nav nav {
+    padding: 0;
+    position: initial;
+    width: calc(var(--nav-width) + var(--vertical-padding));
+  }
+}
