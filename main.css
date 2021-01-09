@@ -11,12 +11,18 @@
  */
 
 :root {
-  --background-color: rgb(255, 255, 255);
   --text-color: #4d5757;
-  --border-color: #e1e7e8;
-  --code-bg-color: #fafafa;
-  --accent-color: #c1cacc;
   --link-color: #2980B9;
+
+  /*
+  --background-color: rgb(255, 255, 255);
+  --border-color: #e1e7e8;
+  --accent-color: #c1cacc;
+  */ 
+
+  --background-color: rgb(229, 230, 232);
+  --accent-color: #567177;
+  --border-color: #c8d0d0;
 
   --document-horizontal-margin: 80px;
   --main-content-margin: 0 auto;
@@ -28,16 +34,15 @@
   margin: 0 auto;
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
     --background-color: rgb(22, 22, 23);
     --text-color: rgb(190, 200, 200);
     --border-color: rgb(40, 40, 41);
-    --code-bg-color: rgb(33, 33, 34);
     --accent-color: rgb(140, 135, 160);
     --link-color: #2980B9;
   }
-}
+}*/
 
 /*
  * Block styling
@@ -121,6 +126,7 @@ h1 {
   margin-top: calc(var(--vertical-padding)/2);
   margin-left: -10px;
   border-bottom: 1px solid var(--border-color);
+  font-variant: small-caps;
 }
 
 h2 {
@@ -132,8 +138,6 @@ h2 {
   margin-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
-  position: sticky;
-  top: 0;
 }
 
 h3 {
@@ -148,6 +152,7 @@ h6 {
   margin: 1rem 0;
 }
 
+h1:before,
 h2::before,
 h3::before
 {
@@ -169,15 +174,14 @@ h3 {
   padding-left: 10px;
 }
 
-h1:first-of-type {
-  margin-top: calc(var(--vertical-padding)/2);
-}
 
+h1 + h2 {
+  margin-top: -0.5rem;
+}
 
 h2 + h3 {
   margin-top: 1.5rem;
 }
-
 
 table {
   border-collapse: collapse;
@@ -200,21 +204,6 @@ h2 + table tr:first-child td {
   border-top-width: 0;
 }
 
-code {
-  background-color: var(--code-bg-color);
-  border-radius: 1px;
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  display: inline-block;
-  font-size: .875rem;
-  padding: 0 3px;
-}
-
-pre code {
-  display: block;
-  padding: 5px 10px;
-}
-
 p + p {
   margin-top: 1.5rem;
 }
@@ -228,19 +217,15 @@ p + p {
   box-sizing: border-box;
   overflow: hidden;
   padding-top: var(--vertical-padding);
-  padding-left: var(--vertical-padding);
+  padding-left: 0;
   width: calc(var(--nav-width) + var(--vertical-padding));
   position: absolute;
   top: 0;
-  left: calc(-1 * calc(var(--nav-width) + var(--vertical-padding)));
-
-    left: calc(-1 * calc(var(--nav-width)));
-    padding-left: 0;
+  left: calc(-1 * calc(var(--nav-width)));
 }
 
 .main-nav nav {
   width: var(--nav-width);
-  position: fixed;
   overflow-y: scroll;
   max-height: 100%;
 }
@@ -250,8 +235,6 @@ p + p {
   display: flex;
   font-size: 0.9rem;
   overflow: hidden;
-  padding-bottom: 0;
-  padding-top: 5px;
   white-space: normal;
   overflow-wrap: break-word;
 }
@@ -260,39 +243,21 @@ p + p {
   text-decoration: none;
 }
 
-.main-nav a .shortcut {
-  align-self: center;
-  color: var(--accent-color);
-  display: inline-block;
-  font-size: .6875rem;
-  font-weight: normal;
-  margin-left: auto;
-  text-align: right;
-}
-
 .main-nav nav ul {
   list-style: none;
   margin: 0;
-  padding-left: 0;
+  padding-left: 0.5rem;
 }
 
-.main-nav nav li {
-  margin-left: 20px;
-  padding: 2px;
-}
-
-.main-nav nav li a {
+.main-nav li {
   padding-top: 3px;
   padding-bottom: 3px;
 }
 
-.main-nav nav > ul > li > a {
-  background: var(--accent-color);
-  color: black;
-}
-
-.main-nav nav > ul > li.is-active.has-childs > a {
-  padding-left: 3px;
+.main-nav nav li a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
 }
 
 .main-nav nav > ul:first-child > li:first-child {
@@ -300,47 +265,41 @@ p + p {
 }
 
 .main-nav nav > ul:first-child > li:first-child > a {
-  color: red;
+  color: var(--accent-color);
   background: none;
   font-variant: small-caps;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   font-size: 1.2em;
   font-weight: bold;
+  padding: 0px;
+  border: none;
 }
 
-.main-nav nav > ul:first-child > li:first-child > a:before {
-  content: "\00a0\00a0";
+.main-nav nav > ul > li > a {
+  background-color: var(--border-color);
+  border: 1px solid var(--accent-color);
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-variant: small-caps;
 }
 
-.main-nav nav > ul > li:not(:first-child) > a {
-  padding-left: 0.45rem;
+.main-nav nav > ul > li.is-active > a {
+  background-color: var(--accent-color);
+  border: 1px solid var(--border-color);
+  color: var(--border-color);
 }
 
 .main-nav nav li.is-active > a {
-  font-weight: bold;
+  font-weight: 800;
+  color: var(--accent-color);
 }
 
 .main-nav nav li:not(.is-active) > ul {
   display: none;
 }
 
-.main-nav nav li.has-childs.is-active > a:before {
-  content: "⌄\00a0";
-}
 
-.main-nav nav li.has-childs:not(.is-active) > a:before {
-  content: "›\00a0";
-}
-
-.main-nav nav li.is-current > a:before {
-  content: "•\00a0";
-}
-
-.main-nav nav > ul > li:not(.is-current):not(.is-active) > a:before {
-  content: "\00a0\00a0";
-}
-
-/* :not(.has-childs):not(.is-active)
+/*
  * Main navigation
  */
 
@@ -388,20 +347,6 @@ p + p {
 }
 
 
-/* Toc markers are used as anchors since sticky headers
- * interfere with scrollto when scrolling up.
- */
-
-.page-toc-scroll-marker {
-  display: block;
-  height: 1px;
-  overflow: hidden;
-  position: relative;
-  top: 1px;
-  width: 1px;
-}
-
-
 /* Footer code. */
 
 .footer {
@@ -427,7 +372,7 @@ p + p {
   }
   .main-nav {
     position: fixed;
-    left: 0;
+    left: calc(var(--vertical-padding)/2);
   }
   .main-nav nav {
     position: initial;
@@ -439,17 +384,29 @@ p + p {
 }
 
 @media (max-width: 978px) {
+  .page-content {
+    width: 100vw;
+  }
   .main-content {
     margin: 0;
+    width: 98vw;
   }
   .main-nav {
+    width: 98vw;
     height: initial;
     position: initial;
-    left: 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px dashed var(--border-color);
   }
   .main-nav nav {
+    width: 100%;
     padding: 0;
     position: initial;
-    width: calc(var(--nav-width) + var(--vertical-padding));
+  }
+  .footer {
+    border-top: 2px dashed var(--border-color);
+  }
+  .footer-content {
+    margin: 0;
   }
 }
