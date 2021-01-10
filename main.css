@@ -65,6 +65,7 @@ body {
 .main-content {
   margin: var(--main-content-margin);
   width: var(--main-content-max-width);
+  margin-bottom: 3rem;
 }
 
 .main-content .article {
@@ -368,6 +369,7 @@ p + p {
   .main-content {
     width: auto;
     max-width: var(--main-content-max-width);
+    margin-bottom: 0;
   }
 
   .footer {
@@ -390,10 +392,6 @@ p + p {
   .main-content {
     margin: 0;
     width: 98vw;
-  }
-
-  .footer {
-    border-top: 2px dashed var(--border-color);
   }
 
   .footer-content {
