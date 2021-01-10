@@ -215,8 +215,14 @@ p + p {
 
 .main-nav nav {
   width: var(--nav-width);
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
   max-height: 100%;
+}
+
+.main-nav nav::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 .main-nav a {
@@ -308,8 +314,14 @@ p + p {
   margin: 0;
   width: var(--nav-width);
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */;
   max-height: 100%;
+}
+
+.page-toc ul::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 .page-toc li:not(:last-child) {
@@ -410,11 +422,6 @@ p + p {
   .main-nav nav {
     position: absolute;
     width: 90%;
-
-    border: 2px dashed var(--border-color);
-
-    background: #ededed;
-    list-style-type: none;
   }
 
   .main-nav nav > ul {
@@ -430,9 +437,7 @@ p + p {
     position: absolute;
     top: 13px;
     left: 10px;
-
     cursor: pointer;
-
     opacity: 0; /* hide this */
     z-index: 2; /* and place it over the hamburger */
   }
@@ -443,14 +448,10 @@ p + p {
     height: 4px;
     margin: 6px;
     position: relative;
-
     background: #cdcdcd;
     border-radius: 3px;
-
     z-index: 1;
-
     transform-origin: 4px 0px;
-
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
                 background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
                 opacity 0.55s ease;
