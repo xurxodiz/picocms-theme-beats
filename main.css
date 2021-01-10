@@ -224,7 +224,7 @@ p + p {
   left: calc(-1 * calc(var(--nav-width)));
 }
 
-.main-nav input,
+.page-content input,
 .main-nav span {
   display: none;
 }
@@ -412,13 +412,37 @@ p + p {
     margin: 0;
   }
 
+  .main-nav {
+    width: 100vw;
+    max-width: 500px;
+    height: initial;
+    position: initial;
+    padding-top: 15px;
+    padding-left: 15px;
+  }
+
+  .main-nav nav {
+    position: absolute;
+    width: 90%;
+
+    border: 2px dashed var(--border-color);
+
+    background: #ededed;
+    list-style-type: none;
+  }
+
+  .main-nav nav > ul {
+    padding-right: 0.5rem;
+    margin-bottom: 12px;
+  }
+
   /* hamburguer menu */
-  .main-nav input {
+  .page-content input {
     display: block;
     width: 40px;
     height: 32px;
     position: absolute;
-    top: 10px;
+    top: 13px;
     left: 10px;
 
     cursor: pointer;
@@ -431,7 +455,7 @@ p + p {
     display: block;
     width: 33px;
     height: 4px;
-    margin-bottom: 5px;
+    margin: 6px;
     position: relative;
 
     background: #cdcdcd;
@@ -460,7 +484,7 @@ p + p {
    * Transform all the slices of hamburger
    * into a crossmark.
    */
-  .main-nav input:checked ~ span
+  input:checked ~ .main-nav span
   {
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
@@ -470,7 +494,7 @@ p + p {
   /*
    * But let's hide the middle one.
    */
-  .main-nav input:checked ~ span:nth-last-child(3)
+  input:checked ~ .main-nav span:nth-last-child(3)
   {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
@@ -479,42 +503,26 @@ p + p {
   /*
    * Ohyeah and the last one should go the other direction
    */
-  .main-nav input:checked ~ span:nth-last-child(2)
+  input:checked ~ .main-nav span:nth-last-child(2)
   {
     transform: rotate(-45deg) translate(0, -1px);
   }
 
-  .main-nav input:checked ~ nav
+  input:checked ~ .main-nav nav
   {
     display: initial;
-    transform: none;
   }
 
-  .main-nav input:not(:checked) ~ nav {
+  input:not(:checked) ~ .main-nav nav {
     display: none;
   }
 
-  .main-nav {
-    width: 100vw;
-    max-width: 500px;
-    height: initial;
-    position: initial;
-    padding-top: 15px;
-    padding-left: 15px;
+  input:checked ~ .main-content {
+    opacity: 0;
   }
 
-  .main-nav nav {
-    position: absolute;
-    width: 90%;
-
-    border: 2px dashed var(--border-color);
-
-    background: #ededed;
-    list-style-type: none;
-  }
-
-  .main-nav nav > ul {
-    padding-right: 0.5rem;
-    margin-bottom: 12px;
+  input:not(:checked) ~ .main-content {
+    opacity: 1;
+    transition: opacity 1s;
   }
 }
