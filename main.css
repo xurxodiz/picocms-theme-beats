@@ -374,10 +374,6 @@ p + p {
     left: calc(var(--vertical-padding)/2);
   }
 
-  .main-nav nav {
-    position: initial;
-  }
-
   .main-content {
     width: auto;
     max-width: var(--main-content-max-width);
