@@ -356,12 +356,7 @@ p + p {
 /* Footer code. */
 
 .footer {
-  padding: 1rem;
-}
-
-.footer-content {
-  float: right;
-  padding-right: 1rem;
+  display: none;
 }
 
 
@@ -390,6 +385,16 @@ p + p {
   .main-content {
     width: auto;
     max-width: var(--main-content-max-width);
+  }
+
+  .footer {
+    padding: 1rem;
+    display: initial;
+  }
+
+  .footer-content {
+    float: right;
+    padding-right: 1rem;
   }
 }
 
