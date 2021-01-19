@@ -11,7 +11,7 @@
  */
 
 :root {
-  --text-color: #4d5757;
+  --text-color: #2d3333;
   --link-color: #2980B9;
   --background-color: rgb(229, 230, 232);
   --accent-color: #567177;
@@ -32,8 +32,8 @@
  */
 
 html {
-  font-family: "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-size: 17px;
   line-height: 1.4;
 }
 
@@ -43,7 +43,6 @@ body {
   margin: 0;
   height: 100%;
 }
-
 
 .flex-wrapper {
   display: flex;
@@ -167,6 +166,11 @@ h2 + h3 {
   margin-top: 1.5rem;
 }
 
+h1, h2, h3, h4, h5, h6,
+.main-nav, .page-toc {
+  font-family: 'Exo 2', Helvetica, sans-serif;
+}
+
 table {
   border-collapse: collapse;
   margin: 1rem 0;
@@ -186,6 +190,10 @@ table th {
 h2 + table tr:first-child th,
 h2 + table tr:first-child td {
   border-top-width: 0;
+}
+
+.main-content { 
+  line-height: 1.75;
 }
 
 p + p {
@@ -243,6 +251,10 @@ p + p {
   list-style: none;
   margin: 0;
   padding-left: 0.5rem;
+}
+
+.main-nav ul ul > li {
+  border-left: 1px solid var(--accent-color);
 }
 
 .main-nav li {
