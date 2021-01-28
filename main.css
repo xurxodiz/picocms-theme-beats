@@ -27,6 +27,12 @@
   margin: 0 auto;
 }
 
+@font-face {
+    font-family: 'Fate Core';
+    src: url('fatecorefont.ttf');
+}
+
+
 /*
  * Block styling
  */
@@ -200,6 +206,10 @@ p + p {
   margin-top: 1.5rem;
 }
 
+
+dice.fate {
+  font-family: 'Fate Core';
+}
 
 /*
  * Main navigation
