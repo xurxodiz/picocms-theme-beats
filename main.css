@@ -13,9 +13,10 @@
 :root {
   --text-color: #2d3333;
   --link-color: #2980B9;
-  --background-color: rgb(229, 230, 232);
+  --background-color: #e5e6e8;
   --accent-color: #567177;
   --border-color: #c8d0d0;
+  --hilight-color: #fbf9e6;
 
   --document-horizontal-margin: 80px;
   --main-content-margin: 0 auto;
@@ -215,6 +216,16 @@ aspect {
   font-variant: small-caps;
   font-weight: bold;
   font-size: 1.1em;
+}
+
+example {
+  display: block;
+  margin: calc(var(--vertical-padding)/2);
+  padding: calc(var(--vertical-padding)/2);
+  border: 1px solid var(--accent-color);
+  font-style: italic;
+  font-family: "Exo 2", sans-serif;
+  background-color: var(--hilight-color);
 }
 
 /*
