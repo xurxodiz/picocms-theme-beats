@@ -56,11 +56,13 @@
         var tocContainer = document.getElementById('page-toc-container');
 
         document.querySelectorAll('.article h1, .article h2, .article h3').forEach(function(el) {
-          var slug = makeSlug(el.textContent);
+          var txt = el.textContent
+
+          var slug = makeSlug(txt);
           el.setAttribute("id", slug);
 
           var newChainIcon = document.createElement('a');
-          var newChainIconText = document.createTextNode('🔗');
+          var newChainIconText = document.createTextNode('#');
           newChainIcon.setAttribute('href', '#' + slug);
           newChainIcon.appendChild(newChainIconText);
           el.prepend(newChainIcon);
@@ -68,7 +70,7 @@
           if (el.tagName == 'H1' || el.tagName == 'H2'){
             var newTocNavItem = document.createElement('li');
             var newTocNavItemLink = document.createElement('a');
-            var newTocNavItemText = document.createTextNode(el.textContent);
+            var newTocNavItemText = document.createTextNode(txt);
             newTocNavItemLink.setAttribute('href', '#' + slug);
             newTocNavItemLink.appendChild(newTocNavItemText);
             newTocNavItem.appendChild(newTocNavItemLink);
