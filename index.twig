@@ -59,6 +59,12 @@
           var slug = makeSlug(el.textContent);
           el.setAttribute("id", slug);
 
+          var newChainIcon = document.createElement('a');
+          var newChainIconText = document.createTextNode('🔗');
+          newChainIcon.setAttribute('href', '#' + slug);
+          newChainIcon.appendChild(newChainIconText);
+          el.prepend(newChainIcon);
+
           if (el.tagName == 'H1' || el.tagName == 'H2'){
             var newTocNavItem = document.createElement('li');
             var newTocNavItemLink = document.createElement('a');
