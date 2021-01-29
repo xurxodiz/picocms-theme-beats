@@ -83,6 +83,9 @@
           .toLowerCase()
           .replace(/ /g,'-')
           .replace(/[-]+/g, '-')
+          .replace(/ñ/g, 'nh') // yeah i want ñ as nh, not n
+          .normalize("NFD")
+          //.replace(/[\u0300-\u036f]/g, "")
           .replace(/[^\w-]+/g,'');
       }
       generatePageTOC();
