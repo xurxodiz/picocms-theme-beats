@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex" />
-  {% if meta.description %}
-    <meta name="description" content="{{ meta.description|striptags }}">
-  {% endif %}
-  <title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
-  <link rel="stylesheet" href="{{ theme_url }}/main.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2&family=Roboto+Slab">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex" />
+    {% if meta.description %}
+      <meta name="description" content="{{ meta.description|striptags }}">
+    {% endif %}
+    <title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
+    <link rel="stylesheet" href="{{ theme_url }}/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2&family=Roboto+Slab">
 
-  {% for css_file in config.external_css %}
-    <link rel="stylesheet" href="{{ css_file }}" type="text/css" />
-  {% endfor %}
-</head>
-<body id="top">
-<div class="flex-wrapper">
-  <div class="page-content">
-    <input type="checkbox" />
-    <aside class="main-nav">
-      <span></span>
-      <span></span>
-      <span></span>
-      <nav>
-        {{ nested_pages | navigation }}
-      </nav>
-    </aside>
-    <main class="main-content">
-      <article class="article">
-        {{ content }}
-      </article>
-    </main>
-    <nav class="page-toc">
-      <ul id="page-toc-container">
+    {% for css_file in config.external_css %}
+      <link rel="stylesheet" href="{{ css_file }}" type="text/css" />
+    {% endfor %}
+  </head>
+  <body id="top">
+    <div class="flex-wrapper">
+      <div class="page-content">
+        <!-- checkbox & three spans are for the hamburger menu -->
+        <input type="checkbox" />
+        <aside class="main-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+          <nav>
+            {{ nested_pages | navigation }}
+          </nav>
+        </aside>
+        <main class="main-content">
+          <article class="article">
+            {{ content }}
+          </article>
+        </main>
+        <nav class="page-toc">
+          <ul id="page-toc-container">
 
-      </ul>
-    </nav>
-  </div>
-  <div class="footer">
-    <p class="footer-content">
-        <a href="#top">▲ Voltar arriba</a>
-    </p>
-  </div>
-</div>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer">
+        <p class="footer-content">
+            <a href="#top">▲ Voltar arriba</a>
+        </p>
+      </div>
+    </div>
 
-<script>
-  /**
-   * Generate page table of contents
-   *
-   * Get all H2 elements and render them in a list
-  **/
-  function generatePageTOC() {
-    var tocContainer = document.getElementById('page-toc-container');
+    <script>
+      /**
+       * Generate page table of contents from h1 & h2 elements
+       * Add ids for hyperlinking in h1, h2 & h3 elements
+       *
+      **/
+      function generatePageTOC() {
+        var tocContainer = document.getElementById('page-toc-container');
 
-    document.querySelectorAll('.article h1, .article h2').forEach(function(el, index) {
-      var newTocNavItem = document.createElement('li');
-      var newTocNavItemLink = document.createElement('a');
-      var newTocNavItemText = document.createTextNode(el.textContent);
-      el.setAttribute("id", 'page-toc-' + index)
-      newTocNavItemLink.setAttribute('href', '#page-toc-' + index);
-      newTocNavItemLink.appendChild(newTocNavItemText);
-      newTocNavItem.appendChild(newTocNavItemLink);
-      tocContainer.appendChild(newTocNavItem);
-    });
-  }
-  generatePageTOC();
-</script>
+        document.querySelectorAll('.article h1, .article h2, .article h3').forEach(function(el) {
+          var slug = makeSlug(el.textContent)
+          el.setAttribute("id", slug)
 
-</body>
+          if (el.tag == 'h1' || el.tag == 'h2'){
+            var newTocNavItem = document.createElement('li');
+            var newTocNavItemLink = document.createElement('a');
+            var newTocNavItemText = document.createTextNode(el.textContent);
+            newTocNavItemLink.setAttribute('href', '#' + slug);
+            newTocNavItemLink.appendChild(newTocNavItemText);
+            newTocNavItem.appendChild(newTocNavItemLink);
+            tocContainer.appendChild(newTocNavItem);
+          }
+        });
+      }
+      function makeSlug(str) {
+        text.toLowerCase()
+            .replace(/ /g,'-')
+            .replace(/[-]+/g, '-')
+            .replace(/[^\w-]+/g,'');
+      }
+      generatePageTOC();
+    </script>
+  </body>
 </html>
