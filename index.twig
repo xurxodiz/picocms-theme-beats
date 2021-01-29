@@ -67,15 +67,19 @@
           newChainIcon.appendChild(newChainIconText);
           el.prepend(newChainIcon);
 
-          if (el.tagName == 'H1' || el.tagName == 'H2'){
+          //if (el.tagName == 'H1' || el.tagName == 'H2'){
             var newTocNavItem = document.createElement('li');
             var newTocNavItemLink = document.createElement('a');
-            var newTocNavItemText = document.createTextNode(txt);
+            if (el.tagName == 'H3') {
+              var newTocNavItemText = document.createTextNode('> ' + txt);
+            } else {
+              var newTocNavItemText = document.createTextNode(txt);
+            }
             newTocNavItemLink.setAttribute('href', '#' + slug);
             newTocNavItemLink.appendChild(newTocNavItemText);
             newTocNavItem.appendChild(newTocNavItemLink);
             tocContainer.appendChild(newTocNavItem);
-          }
+          //}
         });
       }
       function makeSlug(text) {
