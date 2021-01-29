@@ -397,6 +397,10 @@ example {
   font-variant: small-caps;
 }
 
+.page-toc .toc-h3::before {
+  content: "» ";
+}
+
 
 /* Footer code. */
 
