@@ -245,8 +245,7 @@ stress {
   font-weight: bold;
 }
 
-example {
-  display: block;
+blockquote {
   margin: calc(var(--vertical-padding)/2);
   padding: calc(var(--vertical-padding)/2);
   border: 1px solid var(--accent-color);
