@@ -59,7 +59,7 @@
           var slug = makeSlug(el.textContent)
           el.setAttribute("id", slug)
 
-          if (el.tag == 'h1' || el.tag == 'h2'){
+          if (el.nodeName == 'h1' || el.nodeName == 'h2'){
             var newTocNavItem = document.createElement('li');
             var newTocNavItemLink = document.createElement('a');
             var newTocNavItemText = document.createTextNode(el.textContent);
