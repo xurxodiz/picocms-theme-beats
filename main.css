@@ -397,8 +397,8 @@ example {
   font-variant: small-caps;
 }
 
-.page-toc .toc-h3::before {
-  content: "» ";
+.page-toc .toc-h3 {
+  margin-left: calc(var(--vertical-padding)/4);
 }
 
 
