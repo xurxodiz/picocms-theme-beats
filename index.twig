@@ -56,10 +56,10 @@
         var tocContainer = document.getElementById('page-toc-container');
 
         document.querySelectorAll('.article h1, .article h2, .article h3').forEach(function(el) {
-          var slug = makeSlug(el.textContent)
-          el.setAttribute("id", slug)
+          var slug = makeSlug(el.textContent);
+          el.setAttribute("id", slug);
 
-          if (el.nodeName == 'h1' || el.nodeName == 'h2'){
+          if (el.tagName == 'h1' || el.tagName == 'h2'){
             var newTocNavItem = document.createElement('li');
             var newTocNavItemLink = document.createElement('a');
             var newTocNavItemText = document.createTextNode(el.textContent);
@@ -71,10 +71,11 @@
         });
       }
       function makeSlug(text) {
-        text.toLowerCase()
-            .replace(/ /g,'-')
-            .replace(/[-]+/g, '-')
-            .replace(/[^\w-]+/g,'');
+        return text
+          .toLowerCase()
+          .replace(/ /g,'-')
+          .replace(/[-]+/g, '-')
+          .replace(/[^\w-]+/g,'');
       }
       generatePageTOC();
     </script>
