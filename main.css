@@ -24,6 +24,9 @@
   --nav-width: 250px;
   --vertical-padding: 40px;
 
+  --serif-font: 'Roboto Slab', 'Times New Roman', serif;
+  --sans-font: 'Exo 2', 'Helvetica', sans-serif;
+
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -39,7 +42,7 @@
  */
 
 html {
-  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-family: var(--serif-font);
   font-size: 17px;
   line-height: 1.4;
 }
@@ -185,7 +188,7 @@ h2 + h3 {
 
 h1, h2, h3, h4, h5, h6,
 .main-nav, .page-toc {
-  font-family: 'Exo 2', Helvetica, sans-serif;
+  font-family: var(--sans-font);
 }
 
 table {
@@ -230,10 +233,16 @@ aspect {
 
 stress {
   display: inline-block;
-  padding: 2px;
-  font-size: 0.6em;
+  border: 2px solid;
+  padding: 1px;
+  margin: 2px;
+  height: 17px;
+  width: 17px;
+  line-height: 17px;
+  font-size: 17px;
+  text-align: center;
+  font-family: var(--sans-font);
   font-weight: bold;
-  border: 2px solid black;
 }
 
 example {
@@ -242,7 +251,7 @@ example {
   padding: calc(var(--vertical-padding)/2);
   border: 1px solid var(--accent-color);
   font-style: italic;
-  font-family: "Exo 2", sans-serif;
+  font-family: var(--sans-font);
   background-color: var(--hilight-color);
 }
 
