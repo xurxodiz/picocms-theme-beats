@@ -69,6 +69,7 @@
 
           var newTocNavItem = document.createElement('li');
           var newTocNavItemLink = document.createElement('a');
+          var newTocNavItemText = document.createTextNode(txt);
           newTocNavItemLink.setAttribute('href', '#' + slug);
           newTocNavItemLink.setAttribute('class', 'toc-' + el.tagName.toLowerCase());
           newTocNavItemLink.appendChild(newTocNavItemText);
