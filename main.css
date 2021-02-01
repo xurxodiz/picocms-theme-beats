@@ -138,6 +138,11 @@ h3 {
   font-weight: bold;
 }
 
+h4 {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
 h4,
 h5,
 h6 {
@@ -487,6 +492,7 @@ blockquote {
   .main-nav nav {
     position: absolute;
     width: 90%;
+    z-index: 1;
   }
 
   .main-nav nav > ul {
