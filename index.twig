@@ -55,7 +55,7 @@
       function generatePageTOC() {
         var tocContainer = document.getElementById('page-toc-container');
 
-        document.querySelectorAll('.article h1, .article h2, .article h3').forEach(function(el) {
+        document.querySelectorAll('.article h1, .article h2, .article h3, .article h4').forEach(function(el) {
           var txt = el.textContent
 
           var slug = makeSlug(txt);
@@ -67,14 +67,16 @@
           newChainIcon.appendChild(newChainIconText);
           el.prepend(newChainIcon);
 
-          var newTocNavItem = document.createElement('li');
-          var newTocNavItemLink = document.createElement('a');
-          var newTocNavItemText = document.createTextNode(txt);
-          newTocNavItemLink.setAttribute('href', '#' + slug);
-          newTocNavItemLink.setAttribute('class', 'toc-' + el.tagName.toLowerCase());
-          newTocNavItemLink.appendChild(newTocNavItemText);
-          newTocNavItem.appendChild(newTocNavItemLink);
-          tocContainer.appendChild(newTocNavItem);
+          if (el.tagName != 'H4') {
+            var newTocNavItem = document.createElement('li');
+            var newTocNavItemLink = document.createElement('a');
+            var newTocNavItemText = document.createTextNode(txt);
+            newTocNavItemLink.setAttribute('href', '#' + slug);
+            newTocNavItemLink.setAttribute('class', 'toc-' + el.tagName.toLowerCase());
+            newTocNavItemLink.appendChild(newTocNavItemText);
+            newTocNavItem.appendChild(newTocNavItemLink);
+            tocContainer.appendChild(newTocNavItem);
+          } 
         });
       }
       function makeSlug(text) {
